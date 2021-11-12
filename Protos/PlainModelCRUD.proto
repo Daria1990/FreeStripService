@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+option csharp_namespace = "FreeStripService";
+
+package PlainModelCRUD;
+
+service PlainModelCRUD {
+  rpc SelectAll (Empty) returns (PlainModelListResponse);
+  rpc Add (PlainModelRequest) returns (OperationResponse);
+  rpc Update (PlainModelRequest) returns (OperationResponse);
+  rpc Delete (PlainModelFilterRequest) returns (OperationResponse);
+}
+
+message Empty {
+}
+
+message PlainModelRequest {
+  sint32 id = 1;
+  string name = 2;
+  double takeOffStripLength = 3;
+  double landStripLength = 4;
+  sint32 plainTypeId = 5;
+}
+
+message PlainModelListResponse {
+   repeated PlainModelRequest items = 1;
+}
+
+message PlainModelFilterRequest {
+   int32 plainModelId = 1;
+}
+
+message SuccessResponse {
+}
+
+message ErrorResponse {
+  string errorText = 1;
+}
+
+message OperationResponse {
+  oneof response {
+    SuccessResponse successResponse = 1;
+    ErrorResponse errorResponse = 2;
+  }
+}
+

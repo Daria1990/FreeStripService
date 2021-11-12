@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+option csharp_namespace = "FreeStripService";
+
+package PlainInfo;
+
+// The greeting service definition.
+service PlainInfo {
+  // Получить информацию необходимую для посадки самолета
+  rpc GetLandingInfo (PlainPreparationRequest) returns (PlainPreparationReply);
+  // Получить информацию необходимую для взлета самолета
+  rpc GetTakeOffInfo (PlainPreparationRequest) returns (PlainPreparationReply);
+}
+
+message PlainPreparationRequest {
+  sint32 plainModel = 1;
+  //высота над уровнем моря
+  double altitude = 2;
+  //температура на этой высоте
+  double altitudeTemp = 3;
+  //рассчетное значение температуры для высоты
+  double calculatedTemp = 4;
+  //рассчетное значение давления для высоты
+  double calculatedPressure = 5;
+}
+
+// The response message containing the greetings.
+message PlainPreparationReply {
+  //время на подготовку самолета
+  double prepareMinutes = 1;
+  //время необходое, чтобы полоса для самолета оставалось занятой после взлета/посадки
+  double busyStripMinutes = 2;
+  //необходимая длина полосы для взлета
+  double stripLength = 3;
+}

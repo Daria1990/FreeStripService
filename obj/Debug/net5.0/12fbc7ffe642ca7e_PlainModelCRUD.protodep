@@ -1,0 +1,2 @@
+obj\Debug\net5.0\Protos/PlainModelCRUD.cs \
+obj\Debug\net5.0\Protos/PlainModelCRUDGrpc.cs: Protos/PlainModelCRUD.proto
