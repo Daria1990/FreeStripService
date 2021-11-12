@@ -1,2 +1,0 @@
-obj\Debug\netcoreapp3.1\Protos/PlainInfo.cs \
-obj\Debug\netcoreapp3.1\Protos/PlainInfoGrpc.cs: Protos/PlainInfo.proto
